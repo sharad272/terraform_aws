@@ -38,10 +38,15 @@ variable "tagValue1" {
 #   }
 # }
 
-resource "aws_s3_bucket" "example_bucket" {
-  bucket = "germany" 
-  acl    = "public-read-write" 
+resource "aws_s3_bucket" "example" {
+  bucket = "my-tf-test-bucket"
+
 }
+
+# resource "aws_s3_bucket" "example_bucket" {
+#   bucket = "germany" 
+#   acl    = "public-read-write" 
+# }
 
 # # Create a security group
 # resource "aws_security_group" "example" {
