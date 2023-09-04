@@ -40,7 +40,7 @@ variable "tagValue1" {
 
 resource "aws_s3_bucket" "example_bucket" {
   bucket = "germany" 
-  acl    = "public" 
+  acl    = "public-read-write" 
 }
 
 # # Create a security group
