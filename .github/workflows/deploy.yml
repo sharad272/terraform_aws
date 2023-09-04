@@ -10,7 +10,7 @@ permissions:
       contents: read    # This is required for actions/checkout
 jobs:
   DemoOIDC:
-    runs-on: demo
+    runs-on: ubuntu-latest
     steps:
       - name: Git clone the repository
         uses: actions/checkout@v3
@@ -19,5 +19,5 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: arn:aws:iam::419201878575:role/terraform
-          role-session-name: samplerolesession
+          role-session-name: terraform
           aws-region: ${{ env.AWS_REGION }}
