@@ -1,0 +1,39 @@
+name: Terraform Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Configure AWS credentials
+      run: |
+        echo "[default]
+        aws_access_key_id = \${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_access_key = \${{ secrets.AWS_SECRET_ACCESS_KEY }}" > ~/.aws/credentials
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+    - name: Install Terraform
+      run: |
+        wget https://releases.hashicorp.com/terraform/0.14.0/terraform_0.14.0_linux_amd64.zip
+        unzip terraform_0.14.0_linux_amd64.zip
+        sudo mv terraform /usr/local/bin/
+        terraform --version
+
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Terraform Plan
+      run: terraform plan -out=tfplan
+
+    - name: Terraform Apply
+      run: terraform apply -auto-approve tfplan
