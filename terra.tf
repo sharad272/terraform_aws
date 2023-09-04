@@ -1,6 +1,6 @@
 # Use the AWS provider
 provider "aws" {
-  region = "us-east-1"  # Change to your desired AWS region
+  region = "eu-central-1"  # Change to your desired AWS region
 }
 
 # Define variables
