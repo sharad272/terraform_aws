@@ -16,15 +16,15 @@ variable "tagValue1" {
   default = "CalBio"
 }
 
-# Create a VPC
-resource "aws_vpc" "example" {
-  cidr_block = "10.0.0.0/16"
-  tags = {
-    Name = "${var.appName}-${var.env}-VPC"
-    Company = var.tagValue1
-    Environment = var.env
-  }
-}
+# # Create a VPC
+# resource "aws_vpc" "example" {
+#   cidr_block = "10.0.0.0/16"
+#   tags = {
+#     Name = "${var.appName}-${var.env}-VPC"
+#     Company = var.tagValue1
+#     Environment = var.env
+#   }
+# }
 
 # # Create a subnet in the VPC
 # resource "aws_subnet" "example" {
@@ -65,19 +65,19 @@ resource "aws_vpc" "example" {
 #   }
 # }
 
-# # Launch an EC2 instance in the subnet
-# resource "aws_instance" "example" {
-#   ami           = "ami-0c55b159cbfafe1f0"  # Use your desired AMI ID
-#   instance_type = "t2.micro"  # Use your desired instance type
-#   subnet_id     = aws_subnet.example.id
-#   security_groups = [aws_security_group.example.name]
+# Launch an EC2 instance in the subnet
+resource "aws_instance" "example" {
+  ami           = "ami-0c55b159cbfafe1f0"  # Use your desired AMI ID
+  instance_type = "t2.micro"  # Use your desired instance type
+  subnet_id     = aws_subnet.example.id
+  security_groups = [aws_security_group.example.name]
 
-#   tags = {
-#     Name = "${var.appName}-${var.env}-EC2Instance"
-#     Company = var.tagValue1
-#     Environment = var.env
-#   }
-# }
+  tags = {
+    Name = "${var.appName}-${var.env}-EC2Instance"
+    Company = var.tagValue1
+    Environment = var.env
+  }
+}
 
 # # Output the public IP address of the EC2 instance
 # output "ec2_instance_public_ip" {
