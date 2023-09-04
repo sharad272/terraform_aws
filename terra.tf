@@ -17,30 +17,30 @@ variable "tagValue1" {
 }
 
 # Create a VPC
-resource "aws_vpc" "example" {
-  cidr_block = "10.0.0.0/16"
-  tags = {
-    Name = "${var.appName}-${var.env}-VPC"
-    Company = var.tagValue1
-    Environment = var.env
-  }
-}
+# resource "aws_vpc" "example" {
+#   cidr_block = "10.0.0.0/16"
+#   tags = {
+#     Name = "${var.appName}-${var.env}-VPC"
+#     Company = var.tagValue1
+#     Environment = var.env
+#   }
+# }
 
-# Create a subnet in the VPC
-resource "aws_subnet" "example" {
-  vpc_id     = aws_vpc.example.id
-  cidr_block = "10.0.0.0/24"
-  availability_zone = "us-east-1a"  # Change to your desired availability zone
-  tags = {
-    Name = "${var.appName}-${var.env}-Subnet"
-    Company = var.tagValue1
-    Environment = var.env
-  }
-}
+# # Create a subnet in the VPC
+# resource "aws_subnet" "example" {
+#   vpc_id     = aws_vpc.example.id
+#   cidr_block = "10.0.0.0/24"
+#   availability_zone = "us-east-1a"  # Change to your desired availability zone
+#   tags = {
+#     Name = "${var.appName}-${var.env}-Subnet"
+#     Company = var.tagValue1
+#     Environment = var.env
+#   }
+# }
 
 resource "aws_s3_bucket" "example_bucket" {
   bucket = "germany" 
-  acl    = "private" 
+  acl    = "public" 
 }
 
 # # Create a security group
