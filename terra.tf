@@ -39,7 +39,8 @@ variable "tagValue1" {
 # }
 
 resource "aws_s3_bucket" "example" {
-  bucket = "test"
+  bucket = "testING"
+  
 
 }
 
