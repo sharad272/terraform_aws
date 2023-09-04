@@ -16,15 +16,15 @@ variable "tagValue1" {
   default = "CalBio"
 }
 
-# # Create a VPC
-# resource "aws_vpc" "example" {
-#   cidr_block = "10.0.0.0/16"
-#   tags = {
-#     Name = "${var.appName}-${var.env}-VPC"
-#     Company = var.tagValue1
-#     Environment = var.env
-#   }
-# }
+# Create a VPC
+resource "aws_vpc" "example" {
+  cidr_block = "10.0.0.0/16"
+  tags = {
+    Name = "${var.appName}-${var.env}-VPC"
+    Company = var.tagValue1
+    Environment = var.env
+  }
+}
 
 # Create a subnet in the VPC
 resource "aws_subnet" "example" {
