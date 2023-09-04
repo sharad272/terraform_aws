@@ -38,6 +38,11 @@ resource "aws_subnet" "example" {
   }
 }
 
+resource "aws_s3_bucket" "example_bucket" {
+  bucket = "germany" 
+  acl    = "private" 
+}
+
 # # Create a security group
 # resource "aws_security_group" "example" {
 #   name        = "${var.appName}-${var.env}-SecurityGroup"
